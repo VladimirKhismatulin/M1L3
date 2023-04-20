@@ -86,4 +86,4 @@ async def on_message(message):
             message.channel.send("Лечиться - 3")
             message.channel.send("Закончить - 4")
 
-client.run("MTA5Njc2MDk4Nzg3ODY5OTA2OA.GtAayi.BGZ9yFnjq5GQlAHRmWv-bKM98VrrCtErPyaMKA")
+client.run("Типа есть")
