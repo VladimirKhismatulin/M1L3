@@ -33,17 +33,17 @@ async def on_message(message):
             player_health = 100
             shield = False
             await message.channel.send("Сразимся?")
-            message.channel.send("Моё здоровье -" + health)
-            message.channel.send("Твоё здоровье -" + player_health)
-            message.channel.send("Атаковать - 1")
-            message.channel.send("Защищаться - 2")
-            message.channel.send("Лечиться - 3")
-            message.channel.send("Закончить - 4")
+            await message.channel.send("Моё здоровье -" + health)
+            await message.channel.send("Твоё здоровье -" + player_health)
+            await message.channel.send("Атаковать - 1")
+            await message.channel.send("Защищаться - 2")
+            await message.channel.send("Лечиться - 3")
+            await message.channel.send("Закончить - 4")
     elif mode == "fight":
         if message.content.startswith('1'):
             a = random.randint(1, 10)
             health -= a
-            await message.channel.send("Нанесено" + a + "урона!")
+            await message.channel.send("Нанесено" + str(a) + "урона!")
             b = True
         elif message.content.startswith('2'):
             shield = True
@@ -52,7 +52,7 @@ async def on_message(message):
         elif message.content.startswith('3'):
             a = random.randint(1, 10)
             player_health += a
-            await message.channel.send("Вылечено" + a + "здоровья!")
+            await message.channel.send("Вылечено" + str(a) + "здоровья!")
             b = True
         elif message.content.startswith('4'):
             mode = "main"
@@ -67,11 +67,11 @@ async def on_message(message):
                     await message.channel.send("Урон поностью блокирован!")
                 elif a < 0:
                     health += a
-                    await message.channel.send("Контратака! Нанесено" + (-(a)) + "урона!")
+                    await message.channel.send("Контратака! Нанесено" + int(-(a)) + "урона!")
                 shield = False
             if a > 0:
                 player_health -= a
-                await message.channel.send("Вам нанесено" + a + "урона!")
+                await message.channel.send("Вам нанесено" + str(a) + "урона!")
         if health <= 0:
             await message.channel.send("Вы победили!")
             mode = "main"
@@ -79,11 +79,11 @@ async def on_message(message):
             await message.channel.send("Вы проиграли! Повезёт в следующий раз!")
             mode = "main"
         else:
-            message.channel.send("Моё здоровье -" + health)
-            message.channel.send("Твоё здоровье -" + player_health)
-            message.channel.send("Атаковать - 1")
-            message.channel.send("Защищаться - 2")
-            message.channel.send("Лечиться - 3")
-            message.channel.send("Закончить - 4")
+            await message.channel.send("Моё здоровье -" + health)
+            await message.channel.send("Твоё здоровье -" + player_health)
+            await message.channel.send("Атаковать - 1")
+            await message.channel.send("Защищаться - 2")
+            await message.channel.send("Лечиться - 3")
+            await message.channel.send("Закончить - 4")
 
 client.run("Типа есть")
